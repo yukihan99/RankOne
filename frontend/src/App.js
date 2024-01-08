@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Board from "./pages/Board";
+import Board from "./pages/leaderboard";
 
 function App() {
   return (

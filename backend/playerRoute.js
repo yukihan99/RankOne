@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     axios.get(apiUrl)
     .then(response => {
         //grabs all the acts -> just manually go through and find current acts
-        const ten = response.data['players'].slice(0,10)
+        const ten = response.data['players'].slice(0,20)
         console.log(ten)
         res.json(ten)
         

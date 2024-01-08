@@ -1,0 +1,24 @@
+.leaderboard {
+    width:80%;
+    border-collapse:separate;
+    background-color: #040D12;
+    text-align: center;
+}
+
+.leaderboard td:hover {
+    background-color: blueviolet;   
+}
+
+.leaderboard th,td {
+    padding: 10px;
+}
+.boardheader {
+    color: white;
+    padding: 15px;
+}
+
+.boardbody {
+    background-color: #183D3D;
+    color: white;
+    padding: 15px;
+}
