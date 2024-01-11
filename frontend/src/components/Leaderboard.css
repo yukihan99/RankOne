@@ -1,8 +1,10 @@
 .leaderboard {
     width:80%;
-    border-collapse:separate;
+    border-collapse: separate;
     background-color: #040D12;
-    text-align: center;
+    margin: 0 auto;
+    /* animation: slideIn 2s ease-in-out; */
+    
 }
 
 .leaderboard td:hover {
@@ -22,3 +24,14 @@
     color: white;
     padding: 15px;
 }
+
+/* @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  } */

@@ -1,0 +1,42 @@
+.header {
+    color: white;
+    padding: '1rem';
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.logosection {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logosection img{
+    width: 50px;
+    padding-right: 20px;
+}
+
+.navlist {
+    list-style: none;
+    display: flex;
+    padding: 10px;
+    align-self: center;
+    
+}
+
+.navlist li {
+    padding-left: 20px;
+}
+
+.navlist li a {
+    text-decoration: none;
+    font-weight: 600;
+    color: white;
+}
+
+.navlist li a:hover {
+    color: blueviolet
+}

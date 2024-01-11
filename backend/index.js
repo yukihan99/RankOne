@@ -1,5 +1,4 @@
 const express = require('express')
-const db = require('./dbconnection')
 const app = express()
 const cors = require('cors')
 const playerRoute = require('./playerRoute')

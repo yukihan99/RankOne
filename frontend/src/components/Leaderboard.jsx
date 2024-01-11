@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import './leaderboard.css'
+import './Leaderboard.css'
 
-const Board = () => {
+const Leaderboard = () => {
     const [players, setPlayers] = useState(null)
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const Board = () => {
 
     return (
         <div>
-            <table class="leaderboard">
+            <table class="leaderboard">  
                 <thead class="boardheader">
                     <tr>
                         <th>Rank</th>
@@ -48,4 +48,4 @@ const Board = () => {
     )
 }
 
-export default Board
+export default Leaderboard

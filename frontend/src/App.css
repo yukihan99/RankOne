@@ -1,0 +1,49 @@
+.App {
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    scroll-behavior: smooth;
+    overflow: hidden;
+}
+
+.slide {
+    animation: slideIn 2s ease-in-out;
+}
+.val {
+    position: relative;
+}
+
+.wall {
+    width: 100%; 
+    height: 500px;
+    opacity: 60%;
+}
+
+.text{
+    position: absolute;
+    bottom: 0%;
+    left: 15%;   
+}
+.text h1{
+    color:white;
+    font-size: 50px; 
+    line-height: 0.5;
+}
+
+.text p{
+    color: white;
+}
+
+.board {
+    margin: 50px
+}
+@keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(+100px);
+    }
+    70% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
