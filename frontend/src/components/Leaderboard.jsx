@@ -28,6 +28,7 @@ const Leaderboard = () => {
                         <th>Name</th>
                         <th>Rating</th>
                         <th>Wins</th>
+                        <th>TOP (hrs)</th>
                     </tr>
                 </thead>
                 <tbody class="boardbody">       
@@ -38,6 +39,7 @@ const Leaderboard = () => {
                                 <td>{player.gameName}</td> 
                                 <td>{player.rankedRating}</td>
                                 <td>{player.numberOfWins}</td>
+                                <td>{player.peak}</td>
                             </tr>
                         ))
                     ) : (null)}

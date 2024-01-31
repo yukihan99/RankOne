@@ -3,36 +3,58 @@ const express = require('express')
 const router = express.Router()
 const db = require('./dbconnection')
 
-router.get('/', (req, res) => {
-    const riotApiKey = 'RGAPI-022bb508-6565-40c0-a41d-6e272879edc2'
-    const currAct = 'ec876e6c-43e8-fa63-ffc1-2e8d4db25525'
-    const apiUrl = `https://na.api.riotgames.com/val/ranked/v1/leaderboards/by-act/${currAct}?size=100&startIndex=0&api_key=${riotApiKey}`
+router.get('/', async (req, res) => {
+    try {
+        const riotApiKey = 'RGAPI-c10810a3-384b-494e-995c-e70f126112e3';
+        const currAct = 'ec876e6c-43e8-fa63-ffc1-2e8d4db25525';
+        const apiUrl = `https://na.api.riotgames.com/val/ranked/v1/leaderboards/by-act/${currAct}?size=100&startIndex=0&api_key=${riotApiKey}`;
 
-    axios.get(apiUrl)
-    .then(response => {
-        //grabs all the acts -> just manually go through and find current acts
-        const ten = response.data['players'].slice(0,20)
-        one = ten[0]
+        const response = await axios.get(apiUrl);
+        const ten = response.data['players'].slice(0, 20);
+        const one = ten[0];
 
-        for (let i = 0; i < ten.length; i++) {
-            if (!('puuid' in ten[i])) {
-                ten[i]['puuid'] = 'mystery'
-                ten[i]['gameName'] = 'Secret Agent'
-            }         
-        }
+        await configure(ten);
+        update(one);
+        console.log(ten);
+        res.json(ten);
 
-        update(one)
-        res.json(ten)      
-    })
-    .catch(error => {
-        console.error('Error:', error.message)
-    });
-})
+    } 
+    catch (error) {
+        console.error(error);
+    }
+});
+
 
 //calculates the hours a player has been #1
 const calcTime = (newDate, oldDate, oldTime) => {
     let hours = (newDate-oldDate) / (1000 * 60 * 60)
     return (parseFloat(hours) + parseFloat(oldTime)).toFixed(1)
+}
+
+const configure = async(ten) => {
+
+    for (let i = 0; i < ten.length; i++) {
+        if (!('puuid' in ten[i])) {
+            ten[i]['puuid'] = 'mystery'
+            ten[i]['gameName'] = 'Secret Agent'
+        }
+
+        const data = await checkID(ten[i]['puuid'])
+        if (data.exists)
+            {
+                const query = "SELECT time FROM leaders WHERE id = ?"
+                db.query(query, [ten[i]['puuid']], (error, results) => {
+                    if (error) {
+                        console.log(error)
+                    }
+                    ten[i]['peak'] = results[0]['time']
+                })
+            }
+        else {
+            ten[i]['peak'] = '-'     
+        }
+            
+    }
 }
 
 const update = async (player) => {
