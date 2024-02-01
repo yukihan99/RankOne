@@ -10,7 +10,8 @@ const Leaderboard = () => {
 
     const getPlayers = async () => {
         try {
-            const response = await fetch('http://localhost:8000/players')
+            const url = process.env.BACKEND_URL
+            const response = await fetch(`${url}/players`)
             const results = await response.json()
             setPlayers(results)
         }
